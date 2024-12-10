@@ -1,0 +1,50 @@
+n: 20
+mu: 1
+L: 10
+num_zero_eigvals: 0
+P_rng_seed: 10
+stepsize:
+  type: 'rel' # 'rel' -> t = h / L, 'opt' -> t = 2/(mu + L), 'abs': t = h
+  h: 1.5
+
+z0:
+  type: 'zero'
+
+x:
+  type: 'box'
+  l: -12.5
+  u: -10
+
+basic_bounding: False  # True = basic interval prop only, False = LP based bounding
+
+K_min: 1
+K_max: 40
+pnorm: 2
+obj_scaling: 1000
+warmstart: True
+
+vec: True
+callback: False
+jax_callback: True
+num_top_cuts: 1
+binary_tol: 0.4999  # check if abs(x - 0.5) >= binary_tol to see if x is already 0/1
+two_step: False
+two_step_resid_fname: twostep_resids.csv
+two_step_time_fname: twostep_times.csv
+
+one_step: True
+one_step_resid_fname: onestep_resids.csv
+one_step_time_fname: onestep_times.csv
+
+pep_resid_fname: pep_resids.csv
+pep_solvetime_fname: pep_solvetimes.csv
+pep_resid_plot_fname: pep_resids.pdf
+pep_solvetime_plot_fname: pep_solvetimes.pdf
+
+samples:
+  z_seed_offset: 100
+  x_seed_offset: 101
+  N: 10000
+  pep_sample_rad_N: 100
+  out_fname: sample_resids.csv
+  max_out_fname: max_sample_resids.csv
